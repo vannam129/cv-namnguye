@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nguyen Van Nam - Front-end Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+      * {
+        font-family: "Inter", sans-serif;
+      }
+
+      .gradient-bg {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      }
+
+      .card-hover {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .card-hover:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+
+      .skill-bar {
+        height: 8px;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        border-radius: 4px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .skill-bar::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        animation: shimmer 2s infinite;
+      }
+
+      @keyframes shimmer {
+        0% {
+          left: -100%;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+
+      .animate-fade-in {
+        animation: fadeIn 0.6s ease-out forwards;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .typing-effect::after {
+        content: "|";
+        animation: blink 1s infinite;
+      }
+
+      @keyframes blink {
+        0%,
+        50% {
+          opacity: 1;
+        }
+        51%,
+        100% {
+          opacity: 0;
+        }
+      }
+
+      .project-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 shadow-sm">
+      <div class="max-w-6xl mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+          <h1
+            class="text-xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent"
+          >
+            Nam Nguyen
+          </h1>
+          <div class="hidden md:flex space-x-6">
+            <a
+              href="#about"
+              class="text-gray-600 hover:text-purple-600 transition-colors"
+              >About</a
+            >
+            <a
+              href="#skills"
+              class="text-gray-600 hover:text-purple-600 transition-colors"
+              >Skills</a
+            >
+            <a
+              href="#projects"
+              class="text-gray-600 hover:text-purple-600 transition-colors"
+              >Projects</a
+            >
+            <a
+              href="#contact"
+              class="text-gray-600 hover:text-purple-600 transition-colors"
+              >Contact</a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      class="gradient-bg min-h-screen flex items-center justify-center text-white relative overflow-hidden"
+    >
+      <div class="absolute inset-0 bg-black/20"></div>
+      <div class="relative z-10 text-center max-w-4xl mx-auto px-6">
+        <div class="animate-fade-in">
+          <h1 class="text-5xl md:text-7xl font-bold mb-6">Nguyen Van Nam</h1>
+          <p class="text-xl md:text-2xl mb-8 typing-effect">
+            Front-end Developer
+          </p>
+          <p class="text-lg md:text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+            Passionate about creating beautiful, responsive, and user-friendly
+            web experiences with modern technologies like React, Tailwind CSS,
+            and JavaScript.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="#projects"
+              class="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors"
+            >
+              View My Work
+            </a>
+            <a
+              href="#contact"
+              class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-purple-600 transition-colors"
+            >
+              Get In Touch
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating Elements -->
+      <div
+        class="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full animate-bounce"
+        style="animation-delay: 0s"
+      ></div>
+      <div
+        class="absolute top-40 right-20 w-16 h-16 bg-white/10 rounded-full animate-bounce"
+        style="animation-delay: 1s"
+      ></div>
+      <div
+        class="absolute bottom-20 left-20 w-12 h-12 bg-white/10 rounded-full animate-bounce"
+        style="animation-delay: 2s"
+      ></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2
+              class="text-4xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent"
+            >
+              About Me
+            </h2>
+            <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+              I'm a passionate Front-end Developer with experience in modern web
+              technologies. I love creating intuitive and engaging user
+              interfaces that provide excellent user experiences.
+            </p>
+            <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+              Currently studying at FPT University, one of Vietnam's top IT
+              institutions, where I'm gaining hands-on experience with
+              cutting-edge technologies and industry best practices.
+            </p>
+
+            <div class="grid grid-cols-2 gap-6">
+              <div class="text-center p-4 bg-gray-50 rounded-lg">
+                <div class="text-2xl font-bold text-purple-600">2+</div>
+                <div class="text-gray-600">Years Learning</div>
+              </div>
+              <div class="text-center p-4 bg-gray-50 rounded-lg">
+                <div class="text-2xl font-bold text-purple-600">10+</div>
+                <div class="text-gray-600">Projects</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative">
+            <div
+              class="w-80 h-80 mx-auto bg-gradient-to-br from-purple-400 to-blue-500 rounded-full flex items-center justify-center"
+            >
+              <i class="fas fa-code text-white text-6xl"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2
+          class="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent"
+        >
+          Skills & Technologies
+        </h2>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Frontend Skills -->
+          <div class="bg-white p-6 rounded-xl shadow-lg card-hover">
+            <div class="flex items-center mb-4">
+              <i class="fab fa-html5 text-orange-500 text-2xl mr-3"></i>
+              <h3 class="text-xl font-semibold">Frontend</h3>
+            </div>
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="text-sm text-gray-600">HTML/CSS</span>
+                  <span class="text-sm text-gray-600">90%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                  <div class="skill-bar w-[90%]"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="text-sm text-gray-600">JavaScript</span>
+                  <span class="text-sm text-gray-600">85%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                  <div class="skill-bar w-[85%]"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="text-sm text-gray-600">React</span>
+                  <span class="text-sm text-gray-600">80%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                  <div class="skill-bar w-[80%]"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Styling Skills -->
+          <div class="bg-white p-6 rounded-xl shadow-lg card-hover">
+            <div class="flex items-center mb-4">
+              <i class="fab fa-css3-alt text-blue-500 text-2xl mr-3"></i>
+              <h3 class="text-xl font-semibold">Styling</h3>
+            </div>
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="text-sm text-gray-600">Tailwind CSS</span>
+                  <span class="text-sm text-gray-600">95%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                  <div class="skill-bar w-[95%]"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="text-sm text-gray-600">Bootstrap</span>
+                  <span class="text-sm text-gray-600">90%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                  <div class="skill-bar w-[90%]"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="text-sm text-gray-600">Sass</span>
+                  <span class="text-sm text-gray-600">75%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                  <div class="skill-bar w-[75%]"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Other Skills -->
+          <div class="bg-white p-6 rounded-xl shadow-lg card-hover">
+            <div class="flex items-center mb-4">
+              <i class="fas fa-tools text-gray-600 text-2xl mr-3"></i>
+              <h3 class="text-xl font-semibold">Other</h3>
+            </div>
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="text-sm text-gray-600">WordPress</span>
+                  <span class="text-sm text-gray-600">70%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                  <div class="skill-bar w-[70%]"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="text-sm text-gray-600">Java</span>
+                  <span class="text-sm text-gray-600">75%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                  <div class="skill-bar w-[75%]"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between mb-1">
+                  <span class="text-sm text-gray-600">Git</span>
+                  <span class="text-sm text-gray-600">80%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                  <div class="skill-bar w-[80%]"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 gradient-bg relative">
+      <div class="absolute inset-0 bg-black/20"></div>
+      <div class="relative z-10 max-w-6xl mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center mb-16 text-white">
+          Featured Projects
+        </h2>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- E-learning Project -->
+          <div class="project-card rounded-xl p-6 card-hover">
+            <div class="mb-4">
+              <i class="fas fa-graduation-cap text-white text-3xl mb-3"></i>
+              <h3 class="text-xl font-bold text-white mb-2">
+                E-learning Platform
+              </h3>
+              <p class="text-gray-200 text-sm">
+                Modern e-learning platform with interactive features
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-white/20 text-white px-2 py-1 rounded text-xs"
+                >React</span
+              >
+              <span class="bg-white/20 text-white px-2 py-1 rounded text-xs"
+                >Tailwind</span
+              >
+            </div>
+            <div class="flex space-x-3">
+              <a
+                href="https://elearning-capstone.vercel.app/"
+                target="_blank"
+                class="bg-white text-purple-600 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-100 transition-colors flex-1 text-center"
+              >
+                <i class="fas fa-external-link-alt mr-1"></i> Live Demo
+              </a>
+            </div>
+          </div>
+
+          <!-- Bootstrap Project -->
+          <div class="project-card rounded-xl p-6 card-hover">
+            <div class="mb-4">
+              <i class="fab fa-bootstrap text-white text-3xl mb-3"></i>
+              <h3 class="text-xl font-bold text-white mb-2">
+                Bootstrap Capstone
+              </h3>
+              <p class="text-gray-200 text-sm">
+                Responsive website built with Bootstrap framework
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-white/20 text-white px-2 py-1 rounded text-xs"
+                >Bootstrap</span
+              >
+              <span class="bg-white/20 text-white px-2 py-1 rounded text-xs"
+                >jQuery</span
+              >
+            </div>
+            <div class="flex space-x-3">
+              <a
+                href="https://bc44-gr3-capstone-bs4.vercel.app/"
+                target="_blank"
+                class="bg-white text-purple-600 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-100 transition-colors flex-1 text-center"
+              >
+                <i class="fas fa-external-link-alt mr-1"></i> Live Demo
+              </a>
+            </div>
+          </div>
+
+          <!-- HTML/CSS Project -->
+          <div class="project-card rounded-xl p-6 card-hover">
+            <div class="mb-4">
+              <i class="fab fa-html5 text-white text-3xl mb-3"></i>
+              <h3 class="text-xl font-bold text-white mb-2">HTML/CSS Samar</h3>
+              <p class="text-gray-200 text-sm">
+                Clean and modern website using pure HTML/CSS
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-white/20 text-white px-2 py-1 rounded text-xs"
+                >HTML</span
+              >
+              <span class="bg-white/20 text-white px-2 py-1 rounded text-xs"
+                >CSS</span
+              >
+            </div>
+            <div class="flex space-x-3">
+              <a
+                href="https://bc44-html-css-samar.vercel.app/"
+                target="_blank"
+                class="bg-white text-purple-600 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-100 transition-colors flex-1 text-center"
+              >
+                <i class="fas fa-external-link-alt mr-1"></i> Live Demo
+              </a>
+            </div>
+          </div>
+
+          <!-- JavaScript Project -->
+          <div class="project-card rounded-xl p-6 card-hover">
+            <div class="mb-4">
+              <i class="fab fa-js-square text-white text-3xl mb-3"></i>
+              <h3 class="text-xl font-bold text-white mb-2">
+                JavaScript Capstone
+              </h3>
+              <p class="text-gray-200 text-sm">
+                Interactive web application with vanilla JavaScript
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-white/20 text-white px-2 py-1 rounded text-xs"
+                >JavaScript</span
+              >
+              <span class="bg-white/20 text-white px-2 py-1 rounded text-xs"
+                >DOM</span
+              >
+            </div>
+            <div class="flex space-x-3">
+              <a
+                href="https://bc44-js-capstone.vercel.app/"
+                target="_blank"
+                class="bg-white text-purple-600 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-100 transition-colors flex-1 text-center"
+              >
+                <i class="fas fa-external-link-alt mr-1"></i> Live Demo
+              </a>
+            </div>
+          </div>
+
+          <!-- Plant Shop Project -->
+          <div class="project-card rounded-xl p-6 card-hover">
+            <div class="mb-4">
+              <i class="fas fa-leaf text-white text-3xl mb-3"></i>
+              <h3 class="text-xl font-bold text-white mb-2">Plant Shop</h3>
+              <p class="text-gray-200 text-sm">
+                E-commerce website for plant lovers (PRJ301)
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-white/20 text-white px-2 py-1 rounded text-xs"
+                >Java</span
+              >
+              <span class="bg-white/20 text-white px-2 py-1 rounded text-xs"
+                >JSP</span
+              >
+            </div>
+            <div class="flex space-x-3">
+              <a
+                href="https://github.com/DaiNghia0212/plant-online-shop-PRJ301"
+                target="_blank"
+                class="bg-white text-purple-600 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-100 transition-colors flex-1 text-center"
+              >
+                <i class="fab fa-github mr-1"></i> GitHub
+              </a>
+            </div>
+          </div>
+
+          <!-- OOP Project -->
+          <div class="project-card rounded-xl p-6 card-hover">
+            <div class="mb-4">
+              <i class="fab fa-java text-white text-3xl mb-3"></i>
+              <h3 class="text-xl font-bold text-white mb-2">
+                OOP & Algorithms
+              </h3>
+              <p class="text-gray-200 text-sm">
+                Java projects focusing on OOP principles and algorithms
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-white/20 text-white px-2 py-1 rounded text-xs"
+                >Java</span
+              >
+              <span class="bg-white/20 text-white px-2 py-1 rounded text-xs"
+                >OOP</span
+              >
+            </div>
+            <div class="flex space-x-3">
+              <a
+                href="https://github.com/vannam129/OOP"
+                target="_blank"
+                class="bg-white text-purple-600 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-100 transition-colors flex-1 text-center"
+              >
+                <i class="fab fa-github mr-1"></i> GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="py-20 bg-white">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2
+          class="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent"
+        >
+          Experience & Education
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-12">
+          <!-- Experience -->
+          <div class="bg-gray-50 p-8 rounded-xl">
+            <h3 class="text-2xl font-bold mb-6 text-gray-800">
+              Work Experience
+            </h3>
+            <div class="border-l-4 border-purple-500 pl-6">
+              <div class="mb-6">
+                <h4 class="text-lg font-semibold text-gray-800">
+                  Part-time IT Developer
+                </h4>
+                <p class="text-purple-600 font-medium">Tech-Lion Company</p>
+                <p class="text-gray-600 text-sm mt-2">
+                  Gaining hands-on experience in web development and working
+                  with modern technologies.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Education -->
+          <div class="bg-gray-50 p-8 rounded-xl">
+            <h3 class="text-2xl font-bold mb-6 text-gray-800">Education</h3>
+            <div class="border-l-4 border-blue-500 pl-6">
+              <div class="mb-6">
+                <h4 class="text-lg font-semibold text-gray-800">
+                  FPT University
+                </h4>
+                <p class="text-blue-600 font-medium">Information Technology</p>
+                <p class="text-gray-600 text-sm mt-2">
+                  One of Vietnam's top universities specializing in IT, focusing
+                  on practical training and strong industry connections through
+                  FPT Software.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 gradient-bg relative">
+      <div class="absolute inset-0 bg-black/20"></div>
+      <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+        <h2 class="text-4xl font-bold mb-8 text-white">Get In Touch</h2>
+        <p class="text-xl text-gray-200 mb-12">
+          Ready to bring your ideas to life? Let's work together!
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+          <a
+            href="mailto:vannam129001@gmail.com"
+            class="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-xl card-hover text-white"
+          >
+            <i class="fas fa-envelope text-3xl mb-4"></i>
+            <h3 class="text-lg font-semibold mb-2">Email</h3>
+            <p class="text-gray-200">vannam129001@gmail.com</p>
+          </a>
+
+          <a
+            href="tel:0938120771"
+            class="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-xl card-hover text-white"
+          >
+            <i class="fas fa-phone text-3xl mb-4"></i>
+            <h3 class="text-lg font-semibold mb-2">Phone</h3>
+            <p class="text-gray-200">0938120771</p>
+          </a>
+        </div>
+
+        <div class="flex justify-center space-x-6">
+          <a
+            href="https://github.com/vannam129"
+            target="_blank"
+            class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-purple-600 transition-colors"
+          >
+            <i class="fab fa-github text-xl"></i>
+          </a>
+          <a
+            href="mailto:vannam129001@gmail.com"
+            class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-purple-600 transition-colors"
+          >
+            <i class="fas fa-envelope text-xl"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+      <div class="max-w-6xl mx-auto px-6 text-center">
+        <p>
+          &copy; 2024 Nguyen Van Nam. Built with passion and modern web
+          technologies.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Add scroll effect to navbar
+      window.addEventListener("scroll", function () {
+        const nav = document.querySelector("nav");
+        if (window.scrollY > 100) {
+          nav.classList.add("bg-white");
+          nav.classList.remove("bg-white/80");
+        } else {
+          nav.classList.remove("bg-white");
+          nav.classList.add("bg-white/80");
+        }
+      });
+
+      // Animate elements on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-fade-in");
+          }
+        });
+      }, observerOptions);
+
+      // Observe all sections
+      document.querySelectorAll("section").forEach((section) => {
+        observer.observe(section);
+      });
+    </script>
+  </body>
+</html>
